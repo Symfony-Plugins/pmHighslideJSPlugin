@@ -19,7 +19,7 @@ function _get_available_languages()
  *
  * @return string
  */
-function _get_option_value($options, $key, $default_value = null)
+function _get_highslide_js_option_value($options, $key, $default_value = null)
 {
   $value = $default_value;
   if ($key == "lang") {
@@ -47,17 +47,17 @@ function _add_highslide_js_resources($options = array())
   $sf_response->addJavascript("/pmHighslideJSPlugin/js/highslide.js");
 
   // load language script
-  if ($lang = _get_option_value($options, "lang"))
+  if ($lang = _get_highslide_js_option_value($options, "lang"))
     $sf_response->addJavascript("/pmHighslideJSPlugin/js/lang/$lang.js");
 
   // load custom (or default) stylesheet
-  if ($css = _get_option_value($options, "css"))
+  if ($css = _get_highslide_js_option_value($options, "css"))
     $sf_response->addStylesheet("$css");
   else
     $sf_response->addStylesheet("/pmHighslideJSPlugin/css/highslide.css");
 
   // load aditional javascripts
-  if ($js = _get_option_value($options, "js")) {
+  if ($js = _get_highslide_js_option_value($options, "js")) {
     if (is_array($js))
       foreach ($js as $item)
         $sf_response->addJavascript("$item");
@@ -108,10 +108,10 @@ function highslide($image_url, $thumb, $options = array())
                    array("class" => "highslide",
                    "onclick" => "return hs.expand(this)"));
 
-  if ($heading = _get_option_value($options, "heading"))
+  if ($heading = _get_highslide_js_option_value($options, "heading"))
     $html .= content_tag("div", __("$heading"), "class=highslide-heading");
 
-  if ($caption = _get_option_value($options, "caption"))
+  if ($caption = _get_highslide_js_option_value($options, "caption"))
     $html .= content_tag("div", __("$caption"), "class=highslide-caption");
 
   return $html;
@@ -225,9 +225,9 @@ function highslide_flash($url, $thumb, $options = array())
   _add_highslide_js_resources($options);
   sfContext::getInstance()->getResponse()->addJavascript("http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js");
 
-  $width = _get_option_value($options, "width", 300);
+  $width = _get_highslide_js_option_value($options, "width", 300);
 
-  $height = _get_option_value($options, "height", 300);
+  $height = _get_highslide_js_option_value($options, "height", 300);
 
   $html = _get_graphics_dir();
   $html .= _get_outline($options);
