@@ -106,7 +106,7 @@ function highslide($image_url, $thumb, $options = array())
   $html .= link_to($thumb,
                    $image_url,
                    array("class" => "highslide",
-                   "onclick" => "return hs.expand(this, {align: 'center'})"));
+                   "onclick" => "return hs.expand(this)"));
 
   if ($heading = _get_highslide_js_option_value($options, "heading"))
     $html .= content_tag("div", __("$heading"), "class=highslide-heading");
@@ -137,7 +137,7 @@ function highslide_html($id, $content, $thumb, $options = array())
   $html .= link_to($thumb,
                   "#",
                   array("class" => "highslide",
-                        "onclick" => "return hs.htmlExpand(this, {contentId: '$id', align: 'center'})"));
+                        "onclick" => "return hs.htmlExpand(this, {contentId: '$id'})"));
 
   $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id"), false);
 
@@ -183,7 +183,7 @@ function highslide_ajax($url, $thumb, $options = array())
 
   $html .= link_to("$thumb",
                   "$url",
-                  array("onclick" => "return hs.htmlExpand(this, {objectType: 'ajax', align: 'center'})"));
+                  array("onclick" => "return hs.htmlExpand(this, {objectType: 'ajax'})"));
 
   return $html;
 }
@@ -205,8 +205,8 @@ function highslide_iframe($url, $thumb, $options = array())
   $html .= _get_outline($options);
 
   $html .= link_to("$thumb",
-                  "$url",
-                  array("onclick" => "return hs.htmlExpand(this, {objectType: 'iframe', align: 'center'})"));
+                   "$url",
+                   array("onclick" => "return hs.htmlExpand(this, {objectType: 'iframe'})"));
 
   return $html;
 }
@@ -235,7 +235,7 @@ function highslide_flash($url, $thumb, $options = array())
   $html .= link_to("$thumb",
                   "$url",
                   array("class" => "highslide",
-                        "onclick" => "return hs.htmlExpand(this, {objectType: 'swf', width: $width, objectWidth: $width, objectHeight: $height, align: 'center', maincontentText: '".__("You need to upgrade your Flash player")."'})"));
+                        "onclick" => "return hs.htmlExpand(this, {objectType: 'swf', width: $width, objectWidth: $width, objectHeight: $height, maincontentText: '".__("You need to upgrade your Flash player")."'})"));
 
   return $html;
 }
