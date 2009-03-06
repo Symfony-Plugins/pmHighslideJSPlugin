@@ -1,0 +1,56 @@
+= pmHighslideJSPlugin =
+
+pmHighslideJSPlugin is a wrapper for Highslide JS: http://highslide.com
+
+== Installation ==
+
+  * Installation from pear
+    {{{
+      symfony plugin:install pmHighslideJSPlugin
+    }}}
+
+  * Installation from svn repository
+    {{{
+      svn export http://svn.symfony-project.com/plugins/pmHighslideJSPlugin
+    }}}
+
+  * Use the helper:
+    {{{
+      <?php use_helper("Highslide") ?>
+
+      <?php echo highslide("image.jpg", "thumbnail.jpg", array("heading" => "hello world!", "caption" => "hello world!")) ?>
+    }}}
+
+  * Helper functions:
+    {{{
+      highslide($image_url, $thumb, $options = array())
+    }}}
+
+    {{{
+      highslide_html($id, $content, $thumb, $options = array())
+    }}}
+
+    {{{
+      highslide_ajax($url, $thumb, $options = array())
+    }}}
+
+    {{{
+      highslide_iframe($url, $thumb, $options = array())
+    }}}
+
+    {{{
+      highslide_flash($url, $thumb, $options = array())
+    }}}
+
+    More information about how to use it, can be found in the helper documentation.
+
+  * Parameters
+    Parameters can be passed through the options array, such as:
+      * lang (language)
+      * css (stylesheet to be used)
+      * js (additional javascript)
+      * outline (outline to be used)
+      * heading (heading text)
+      * caption (caption text)
+      * width
+      * height
