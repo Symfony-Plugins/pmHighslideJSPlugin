@@ -139,7 +139,10 @@ function highslide_html($id, $content, $thumb, $options = array())
                   array("class" => "highslide",
                         "onclick" => "return hs.htmlExpand(this, {contentId: '$id'})"));
 
-  $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id"), false);
+  if ($style = _get_highslide_js_option_value($options, "style"))
+    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id", "style" => "$style"), false);
+  else
+    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id"), false);
 
   $html .= tag("div", array("class" => "highslide-header"), false);
 
