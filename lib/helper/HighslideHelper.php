@@ -56,6 +56,7 @@ function _add_highslide_js_resources($options = array())
   else
     $sf_response->addStylesheet("/pmHighslideJSPlugin/css/highslide.css");
 
+
   // load aditional javascripts
   if ($js = _get_highslide_js_option_value($options, "js")) {
     if (is_array($js))
@@ -103,10 +104,20 @@ function highslide($image_url, $thumb, $options = array())
   $html = _get_graphics_dir();
   $html .= _get_outline($options);
 
+  $hs = "return hs.expand(this";
+  if (isset($options["width"]))
+    if (isset($options["height"]))
+      $hs .= ", { width: ".$options["width"].", height: ".$options["height"]."}";
+    else
+      $hs .= ", { width: ".$options["width"]."}";
+  else if (isset($options["height"]))
+    $hs .= ", { height: ".$options["height"]."}";
+  $hs .= ");";
+
   $html .= link_to($thumb,
                    $image_url,
                    array("class" => "highslide",
-                   "onclick" => "return hs.expand(this)"));
+                   "onclick" => $hs));
 
   if ($heading = _get_highslide_js_option_value($options, "heading"))
     $html .= content_tag("div", __("$heading"), "class=highslide-heading");
