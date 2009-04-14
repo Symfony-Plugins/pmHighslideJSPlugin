@@ -6,7 +6,7 @@ hs.lang = {
   fullExpandTitle: 'Expandir al tamaño actual (f)',
   creditsText: 'Provisto por <i>Highslide JS</i>',
   creditsTitle: 'Ir al sitio de Higslide JS',
-  restoreTitle: 'Click para cerrar la imagen, click y arrastrar para mover. Use las flechas para ver las images siguientes y anteriores.'
+  restoreTitle: 'Click para cerrar la imagen, click y arrastrar para mover. Use las flechas para ver las images siguientes y anteriores.',
   previousText : 'Anterior',
   nextText : 'Siguiente',
   moveText : 'Mover',
