@@ -151,30 +151,30 @@ function highslide_html($id, $content, $thumb, $options = array())
                         "onclick" => "return hs.htmlExpand(this, {contentId: '$id'})"));
 
   if ($style = _get_highslide_js_option_value($options, "style"))
-    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id", "style" => "$style"), false);
+    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id", "style" => "$style"), true);
   else
-    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id"), false);
+    $html .= tag("div", array("class" => "highslide-html-content", "id" => "$id"), true);
 
-  $html .= tag("div", array("class" => "highslide-header"), false);
+  $html .= tag("div", array("class" => "highslide-header"), true);
 
-  $html .= tag("ul", array(), false);
+  $html .= tag("ul", array(), true);
   $html .= content_tag("li", link_to(__("Move"), "#", array("onclick" => "return false")), array("class" => "highslide-move"));
   $html .= content_tag("li", link_to(__("Close"), "#", array("onclick" => "return hs.close(this)")), array("class" => "highslide-close"));
-  $html .= tag("/ul", array(), false);
+  $html .= tag("/ul", array(), true);
 
-  $html .= tag("/div", array(), false);
+  $html .= tag("/div", array(), true);
 
   $html .= content_tag("div", __("$content"), array("class" => "highslide-body"));
 
-  $html .= tag("div", array("class" => "highslide-footer"), false);
-  $html .= tag("div", array(), false);
-  $html .= tag("span", array("class" => "highslide-resize", "title" => __("Resize")), false);
-  $html .= tag("span", array(), false);
-  $html .= tag("/span", array(), false);
-  $html .= tag("/span", array(), false);
-  $html .= tag("/div", array(), false);
-  $html .= tag("/div", array(), false);
-  $html .= tag("/div", array(), false);
+  $html .= tag("div", array("class" => "highslide-footer"), true);
+  $html .= tag("div", array(), true);
+  $html .= tag("span", array("class" => "highslide-resize", "title" => __("Resize")), true);
+  $html .= tag("span", array(), true);
+  $html .= tag("/span", array(), true);
+  $html .= tag("/span", array(), true);
+  $html .= tag("/div", array(), true);
+  $html .= tag("/div", array(), true);
+  $html .= tag("/div", array(), true);
 
   return $html;
 }
