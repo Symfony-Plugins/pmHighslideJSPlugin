@@ -104,14 +104,19 @@ function highslide($image_url, $thumb, $options = array())
   $html = _get_graphics_dir();
   $html .= _get_outline($options);
 
-  $hs = "return hs.expand(this";
   if (isset($options["width"]))
-    if (isset($options["height"]))
+    if (isset($options["height"]) && isset($options["group"]))
+      $hs .= ", { width: ".$options["width"].", height: ".$options["height"].", slideshowGroup: '".$options["group"]."'}";
+    else if (isset($options["height"]))
       $hs .= ", { width: ".$options["width"].", height: ".$options["height"]."}";
+    else if (isset($options["group"]))
+      $hs .= ", { width: ".$options["width"].", slideshowGroup: '".$options["group"]."'}";
     else
       $hs .= ", { width: ".$options["width"]."}";
   else if (isset($options["height"]))
     $hs .= ", { height: ".$options["height"]."}";
+  else if (isset($options["group"]))
+    $hs .= ", { slideshowGroup: '".$options["group"]."'}";
   $hs .= ");";
 
   $html .= link_to($thumb,
