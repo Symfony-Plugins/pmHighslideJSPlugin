@@ -204,6 +204,12 @@ function highslide_ajax($url, $thumb, $options = array())
                   "$url",
                   array("onclick" => "return hs.htmlExpand(this, {objectType: 'ajax'})"));
 
+  if ($heading = _get_highslide_js_option_value($options, "heading"))
+    $html .= content_tag("div", __("$heading"), "class=highslide-heading");
+
+  if ($caption = _get_highslide_js_option_value($options, "caption"))
+    $html .= content_tag("div", __("$caption"), "class=highslide-caption");
+
   return $html;
 }
 
